@@ -1,0 +1,19 @@
+string name="raJ26jVCyaAhLhlZC3OUEqsWPR40k8FTuNA5NjN5ZlZ4mJiwJGpIKTeIKi67ABe85r3pBprPqQ9WM4CJbijnOXmDRVjPeKMb13RMXJQo6HeT2Uqv0lfVtDn2FVGDVJky0IcscLp1bqZOk95Fy1UhcJpErG8d0SokcHNsDiLONaCOz91cdavhmRikYRy8ZE1pybn5/U4kfAhHm8woxxyUPDh/V3oakfgttx+rYr9wYVO2atFtWbrH4eCflBNFtZtDfnvvuUg3GS8GaYKbGeIMyTFc/7snLFZRWa15sncFcJO10m4tnddavho9iblY0DRMNmCy7ZEMg0nilAk1Hx2cEw=="
+
+string json =@"{  
+    'Data':" + name +"
+}"
+
+var ItemRow = [];
+		var Item = new Object();
+		Item["id"] = "1";
+		Item["name"] = "test"
+		ItemRow.push(Item);
+
+		var s = JSON.stringify(ItemRow);
+
+
+        https://stackoverflow.com/questions/18485715/how-to-use-public-and-private-key-encryption-technique-in-c-sharp
+
+    
+        -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArxd93uLDs8HTPqcSPpxZ\nrf0Dc29r3iPp0a8filjAyeX4RAH6lWm9qFt26CcE8ESYtmo1sVtswvs7VH4Bjg/F\nDlRpd+MnAlXuxChij8/vjyAwE71ucMrmZhxM8rOSfPML8fniZ8trr3I4R2o4xWh6\nno/xTUtZ02/yUEXbphw3DEuefzHEQnEF+quGji9pvGnPO6Krmnri9H4WPY0ysPQQ\nQd82bUZCk9XdhSZcW/am8wBulYokITRMVHlbRXqu1pOFmQMO5oSpyZU3pXbsx+Ox\nIOc4EDX0WMa9aH4+snt18WAXVGwF2B4fmBk7AtmkFzrTmbpmyVqA3KO2IjzMZPw0\nhQIDAQAB\n-----END PUBLIC KEY-----\n
