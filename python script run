@@ -1,0 +1,22 @@
+
+            String FileName = "script.py";
+            ProcessStartInfo ProcessInfo = new ProcessStartInfo("python3");
+
+            ProcessInfo.UseShellExecute = false;
+            ProcessInfo.RedirectStandardOutput = true;
+
+            ProcessInfo.Arguments = FileName;
+            // create a object of process
+            Process myprocess = new Process();
+            //Assign the info to process
+
+            myprocess.StartInfo = ProcessInfo;
+
+            // start the process
+            myprocess.Start();
+
+            StreamReader myStreamReader = myprocess.StandardOutput;
+            string myString = myStreamReader.ReadToEnd();
+            myprocess.WaitForExit();
+            myprocess.Close();
+            Console.WriteLine(myString);

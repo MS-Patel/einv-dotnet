@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[1.8.9, )"
             },
+            "IronPython": {
+              "target": "Package",
+              "version": "[2.7.12, )"
+            },
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
               "version": "[5.2.7, )"

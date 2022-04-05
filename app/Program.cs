@@ -14,13 +14,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
+using System.Diagnostics;
+using IronPython.Hosting;
+
 namespace app
 {
     class Program
     {
         static void Main(string[] args)
         {
-            call_server_api();
+            var engine = Python.CreateEngine();
+            String FileName = "script.py";
+            var source = engine.CreateScriptSourceFromFile(FileName);
+
+            var argv= new List<string>();
+            argv.Add("");
+
+            engine.GetSysModule().SetVariable("argv",argv);
+            var eIO = engine.Runtime.IO;
+
+            var results = new MemoryStream();
+            eIO.SetOutput(results, Encoding.Default);
+            try{
+            var scope = engine.CreateScope();
+            source.Execute(scope);
+            }
+            catch (Exception){
+                Console.WriteLine("error");
+            }
+            Console.WriteLine(results);
+            // call_server_api();
         }
         public static void call_server_api()
         {
@@ -46,15 +69,15 @@ namespace app
                 data.UserName = userName;
                 data.ForceRefreshAccessToken = false;
                 string authStr = JsonConvert.SerializeObject(data);
-                Console.WriteLine(authStr);
+                // Console.WriteLine(authStr);
                 byte[] authBytes = System.Text.Encoding.UTF8.GetBytes(authStr);
                 aRequestPayload.Data = Encrypt(Convert.ToBase64String(authBytes), public_key);
-                // aRequestPayload.Data = "AVSjz4p\\/0jsK6F8Q\\/lcj+7Nt\\/9ZZOg0h46ehdTRdHD4tOm1yiPaEwadapTEqBjA\\/vL13mUFhrQWZ2IklrseGqlq\\/Kwx6wzW8pVVnOBzJCc\\/J4qB7AsiHCVbOlkxVm2PcnAKQCsgLPrZHkcr\\/t07ehuReextyR9GIFSJvYdpAiQ7d2kyfSPG1Gjs1JfD1bVlRe50Jhm3hQg055wf7GbJNqoh8xXDzHxiDcW\\/mX4Z89qNtoX1+QckT312JWf1EQ8qBtQMuM+e3\\/tZI++NP92tcW7B\\/6CCc+24u5MQ8cN3wnCf0rWLnHYxJcvm8WdGylHPEJbGehWWtIKhpBe9aVICwgA==";
-                Console.WriteLine(aRequestPayload.Data);
+
+                // Console.WriteLine(aRequestPayload.Data);
                 string abc = JsonConvert.SerializeObject(aRequestPayload);
-                Console.WriteLine(abc);
+                // Console.WriteLine(abc);
                 HttpResponseMessage res = client.PostAsJsonAsync(uri, aRequestPayload).Result;
-                Console.WriteLine(res);
+                // Console.WriteLine(res);
                 if (res.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Call is success");
