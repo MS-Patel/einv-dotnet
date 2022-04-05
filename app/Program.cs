@@ -150,6 +150,46 @@ namespace app
             return cipherresult;
         }
        
+        public static string EncryptBySymmetricKey(string jsondata, string sek)
+              {
+              //Encrypting SEK
+              try
+                 {
+                    byte[] dataToEncrypt = Convert.FromBase64String(jsondata);
+                    var keyBytes = Convert.FromBase64String(sek);
+                    AesManaged tdes = new AesManaged();
+                    tdes.KeySize = 256;
+                    tdes.BlockSize = 128;
+                    tdes.Key = keyBytes;
+                    tdes.Mode = CipherMode.ECB;
+                    tdes.Padding = PaddingMode.PKCS7;
+                    pICryptoTransform encrypt__1 = tdes.CreateEncryptor();
+                    byte[] deCipher = encrypt__1.TransformFinalBlock(dataToEncrypt, 0, dataToEncrypt.Length);
+                    tdes.Clear();
+                    string EK_result = Convert.ToBase64String(deCipher);
+                    return EK_result;
+                }
+                    catch (Exception ex)
+                       {
+                         throw ex;
+                       }
+             }  
+        public static string Decode(string token)
+    {
+       var parts = token.Split('.');
+       var header = parts[0];
+       var payload = parts[1];
+       var signature = parts[2];
+       byte[] crypto = Base64UrlDecode(parts[2]);
+       var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
+       var headerData = JObject.Parse(headerJson);
+       var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
+       var payloadData = JObject.Parse(payloadJson);        
+       return headerData.ToString() + payloadData.ToString();
+     }
+
+
+
     }
     public class Auth
     {
