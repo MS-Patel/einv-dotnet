@@ -163,7 +163,7 @@ namespace app
                     tdes.Key = keyBytes;
                     tdes.Mode = CipherMode.ECB;
                     tdes.Padding = PaddingMode.PKCS7;
-                    pICryptoTransform encrypt__1 = tdes.CreateEncryptor();
+                    ICryptoTransform encrypt__1 = tdes.CreateEncryptor();
                     byte[] deCipher = encrypt__1.TransformFinalBlock(dataToEncrypt, 0, dataToEncrypt.Length);
                     tdes.Clear();
                     string EK_result = Convert.ToBase64String(deCipher);
@@ -187,9 +187,6 @@ namespace app
        var payloadData = JObject.Parse(payloadJson);        
        return headerData.ToString() + payloadData.ToString();
      }
-
-
-
     }
     public class Auth
     {

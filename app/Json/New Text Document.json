@@ -1,0 +1,181 @@
+
+{
+  "Version": "1.1",
+  "TranDtls": {
+  # "TaxSch": "GST",
+  # "SupTyp": "B2B",
+  # "RegRev": "Y",
+  # "EcmGstin": null,
+  # "IgstOnIntra": "N"
+  },
+  "DocDtls": {
+   #"Typ": "INV",
+    "No": "DocumentNo,
+    "Dt": DocumentDate
+  },
+  "SellerDtls": {
+    "Gstin": Company_GSTNo,
+    "LglNm": LegalName,
+    "TrdNm": TradeName,
+    "Addr1": Address1,
+    "Addr2": Address2,
+    "Loc": City,
+    "Pin": PinCode,
+    "Stcd": StateCode,
+    "Ph": Phone,
+    "Em": EMail
+  },
+  "BuyerDtls": {
+    "Gstin": Buyer_GSTIN,
+    "LglNm": Buyer_LegalName,
+    "TrdNm": Buyer_TradeName,
+   #"Pos": "12",
+    "Addr1": Buyer_Address1,
+    "Addr2": Buyer_Address2,
+    "Loc": Buyer_CityName,
+    "Pin": Buyer_PinCode,
+    "Stcd": Buyer_StateCode,
+    "Ph": Buyer_Phone,
+    "Em": Buyer_Email
+  },
+  "DispDtls": {
+  #  "Nm": "ABC company pvt ltd",
+  #  "Addr1": "7th block, kuvempu layout",
+  #  "Addr2": "kuvempu layout",
+  #  "Loc": "Banagalore",
+  #  "Pin": 562160,
+  #  "Stcd": "29"
+  },
+  "ShipDtls": {
+    "Gstin": Consg_GSTIN,
+    "LglNm": Consg_LegalName,
+    "TrdNm": Consg_TradeName,
+    "Addr1": Consg_Address1,
+    "Addr2": Consg_Address2,
+    "Loc": Consg_CityName,
+    "Pin": Consg_PinCode,
+    "Stcd": Consg_StateCode
+  },
+  "ItemList": [
+    {
+      "SlNo": SerialNo,
+      "PrdDesc": Product_Description,
+    # "IsServc": "N",
+      "HsnCd": HSNCode,
+      "Barcde": Barcode,
+      "Qty": Quantity,
+      "FreeQty": FreeQty,
+      "Unit": Unit,
+      "UnitPrice": Rate,
+      "TotAmt": ItemAmount,
+      "Discount": DiscountAmount,
+     #"PreTaxVal": 1,
+      "AssAmt": Ass_Value,
+     #"GstRt": 12.0,
+      "IgstAmt": ITM_IGST,
+      "CgstAmt": ITM_CGST,
+     #"CesRt": 5,
+      "SgstAmt":ITM_SGST,
+     #"CesAmt": 498.94,
+     #"CesNonAdvlAmt": 10,
+     #"StateCesRt": 12,
+     #"StateCesAmt": 1197.46,
+     #"StateCesNonAdvlAmt": 5,
+     #"OthChrg": 10,
+     #"TotItemVal": 12897.7,
+     #"OrdLineRef": "3256",
+     #"OrgCntry": "AG",
+     #"PrdSlNo": "12345",
+     #"BchDtls": {
+        "Nm": BatchNo,
+       #"ExpDt": "01/08/2020",
+       #"WrDt": "01/09/2020"
+      },
+      "AttribDtls": [
+        {
+        # "Nm": "Rice",
+        # "Val": "10000"
+        }
+      ]
+    }
+  ],
+  "ValDtls": {
+    "AssVal": AssValue,
+    "CgstVal": INV_CGST,
+    "SgstVal": INV_SGST,
+    "IgstVal": INV_IGST,
+    "CesVal": Cess,
+    "StCesVal": StateCess,
+    "Discount": Discount,
+    "OthChrg": OtherCharges,
+    "RndOffAmt": RoundOff,
+    "TotInvVal": Total_InvValue,
+    "TotInvValFc": Total_ValueAfterDisc
+  },
+  "PayDtls": {
+  # "Nm": "ABCDE",
+  # "AccDet": "5697389713210",
+  # "Mode": "Cash",
+  # "FinInsBr": "SBIN11000",
+  # "PayTerm": "100",
+  # "PayInstr": "Gift",
+  # "CrTrn": "test",
+  # "DirDr": "test",
+  # "CrDay": 100,
+  # "PaidAmt": 10000,
+  # "PaymtDue": 5000
+  },
+  "RefDtls": {
+  # "InvRm": "TEST",
+  # "DocPerdDtls": {
+  #   "InvStDt": "01/08/2020",
+  #   "InvEndDt": "01/09/2020"
+    },
+    "PrecDocDtls": [
+      {
+   #     "InvNo": "DOC/002",
+   #     "InvDt": "01/08/2020",
+  #      "OthRefNo": "123456"
+      }
+    ],
+    "ContrDtls": [
+      {
+   #     "RecAdvRefr": "Doc/003",
+   #     "RecAdvDt": "01/08/2020",
+   #     "TendRefr": "Abc001",
+   #     "ContrRefr": "Co123",
+   #     "ExtRefr": "Yo456",
+   #     "ProjRefr": "Doc-456",
+   #     "PORefr": "Doc-789",
+   #     "PORefDt": "01/08/2020"
+      }
+    ]
+  },
+  "AddlDocDtls": [
+    {
+   #   "Url": "https://einv-apisandbox.nic.in",
+   #   "Docs": "Test Doc",
+   #   "Info": "Document Test"
+    }
+  ],
+  "ExpDtls": {
+    "ShipBNo": "A-248",
+    "ShipBDt": "01/08/2020",
+    "Port": "INABG1",
+    "RefClm": "N",
+    "ForCur": "AED",
+    "CntCode": "AE",
+    "ExpDuty": null
+  },
+  "EwbDtls": {
+    "TransId": TR_GSTIN,
+    "TransName": TransporterName,
+    "Distance": Distance,
+    "TransDocNo": TR_DOc_No,
+    "TransDocDt": TR_Doc_Date,
+    "VehNo": VehicleNo,
+    "VehType": VehicleType,
+    "TransMode": TR_Mode
+  }
+}
+		 
