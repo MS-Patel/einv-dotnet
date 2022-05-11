@@ -1,8 +1,8 @@
 import pyodbc
 import base64
 import json
-# ___________________________________________Dot Net Code_____________________________________________
 import clr
+# ___________________________________________Dot Net Code_____________________________________________
 from System.Reflection import Assembly
 Assembly.LoadFile(r"D:\einv-dotnet\app\dll\System.Net.Http.Extensions.dll")
 Assembly.LoadFile(r"D:\einv-dotnet\app\dll\System.Net.Http.Primitives.dll")
@@ -16,14 +16,16 @@ clr.AddReference("System.Net.Http.Primitives")
 clr.AddReference("System.Net.Http.Formatting")
 clr.AddReference("Newtonsoft.Json")
 # ___________________________________________Python Code_____________________________________________
+from Calc import Program
 
-conn = pyodbc.connect(
-    "Driver={ODBC Driver 17 for SQL Server};" "Server=DESKTOP-FV0B6MO\SQLEXPRESS;" "uid=msp;" "pwd=msp@123;" "Database=invoice;" "Trusted_Connection=no;")
+# conn = pyodbc.connect(
+#     "Driver={ODBC Driver 17 for SQL Server};" "Server=DESKTOP-FV0B6MO\SQLEXPRESS;" "uid=msp;" "pwd=msp@123;" "Database=invoice;" "Trusted_Connection=no;")
 
-def read(conn):
-    cursor = conn.cursor()
-    cursor.execute(
-        "select * from invoice_details where EInvoice_Status = 'false'")
+
+# def read(conn):
+#     cursor = conn.cursor()
+#     cursor.execute(
+#         "select * from invoice_details where EInvoice_Status = 'false'")
 
     # for inv in cursor:
     #     jsondata = {"Version": "1.1",
@@ -145,14 +147,82 @@ def read(conn):
     #     return jsondata
 
 
-jsondata = (read(conn))
-jsondata={"Version": "1.1","UserGstin": "29ABLPK6554F000","TranDtls": { "SupTyp": "B2B", "RegRev": "N", "TaxSch": "GST","IgstOnIntra": "N" },"DocDtls": {"Typ": "INV","No": "MAR022","Dt": "06/04/2022"},"SellerDtls": {"LglNm": "Borkar Packaging Pvt. Ltd.","Gstin": "29ABLPK6554F000","Addr1": "Address1","Loc": "Hydrabad","Stcd": "29","Pin": 560001},"BuyerDtls": {"LglNm": "Shalibhadra Finance Limited","Gstin": "37ABLPK6554F002","Pos": "37","Addr1": "Address1","Loc": "Hydrabad","Stcd": "37","Pin": 518001},"ValDtls": {"AssVal": 2000,"IgstVal": 360,"CgstVal": 0,"SgstVal": 0,"CesVal": 0,"StCesVal": 0,"TotInvVal": 2360},"itemList": [{"SlNo": "1","PrdDesc": "Abc","IsServc": "N","HsnCd": "390110","Qty": 10,"Unit": "SQM","UnitPrice": 100,"TotAmt": 1000,"Discount": 0,"AssAmt": 1000,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180},{"SlNo": "2","PrdDesc": "Abc","IsServc": "N","HsnCd": "100110","Qty": 100,"Unit": "SQM","UnitPrice": 10,"TotAmt": 1000,"Discount": 0,"AssAmt": 1000,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180}]}
+# jsondata = (read(conn))
+jsondata = {
+    "Version": "1.1",
+    "UserGstin": "29ABLPK6554F000",
+    "TranDtls": {
+        "SupTyp": "B2B",
+        "RegRev": "N",
+        "TaxSch": "GST",
+        "IgstOnIntra": "N"
+    },
+    "DocDtls": {
+        "Typ": "INV",
+        "No": "MAR119",
+        "Dt": "11/05/2022"
+    },
+    "SellerDtls": {
+        "LglNm": "Borkar Packaging Pvt. Ltd.",
+        "Gstin": "29ABLPK6554F000",
+        "Addr1": "Address1",
+        "Loc": "Hydrabad",
+        "Stcd": "29",
+        "Pin": 560001
+    },
+    "BuyerDtls": {
+        "LglNm": "Shalibhadra Finance Limited",
+        "Gstin": "37ABLPK6554F002",
+        "Pos": "37",
+        "Addr1": "Address1",
+        "Loc": "Hydrabad",
+        "Stcd": "37",
+        "Pin": 518001
+    },
+    "ValDtls": {
+        "AssVal": 2000,
+        "IgstVal": 360,
+        "CgstVal": 0,
+        "SgstVal": 0,
+        "CesVal": 0,
+        "StCesVal": 0,
+        "TotInvVal": 2360
+    },
+    "itemList": [{
+        "SlNo": "1",
+        "PrdDesc": "Abc",
+        "IsServc": "N",
+        "HsnCd": "390110",
+        "Qty": 10,
+        "Unit": "SQM",
+        "UnitPrice": 100,
+        "TotAmt": 1000,
+        "Discount": 0,
+        "AssAmt": 1000,
+        "GstRt": 18,
+        "IgstAmt": 180,
+        "TotItemVal": 1180
+    }, {
+        "SlNo": "2",
+        "PrdDesc": "Abc",
+        "IsServc": "N",
+        "HsnCd": "100110",
+        "Qty": 100,
+        "Unit": "SQM",
+        "UnitPrice": 10,
+        "TotAmt": 1000,
+        "Discount": 0,
+        "AssAmt": 1000,
+        "GstRt": 18,
+        "IgstAmt": 180,
+        "TotItemVal": 1180
+    }]
+}
 # ___________________________________________Dot Net Code_____________________________________________
-from Calc import Program
 
 obj = Program()
 
-sek= obj.call_server_api()
+sek = obj.call_server_api()
 
 jsondata = base64.urlsafe_b64encode(json.dumps(jsondata).encode()).decode()
 # jsondata = base64.b64encode(jsondata.encode())
@@ -160,5 +230,11 @@ jsondata = base64.urlsafe_b64encode(json.dumps(jsondata).encode()).decode()
 # sek = base64.b64encode(sek.encode())
 # sek = base64.b64decode(sek)
 # print(jsondata)
-res=obj.EncryptBySymmetricKey(jsondata, sek, "XChXKOmedvWfUaDVxE64hCc25")
-print(res)
+res = obj.EncryptBySymmetricKey(jsondata, sek, "uxTLHetOCiX57CAURXd0w6G3k")
+try:
+    result = json.loads(res)
+    print(result)
+except:
+    result = json.loads(base64.urlsafe_b64decode(res.encode()).decode())
+    print(result)
+    
