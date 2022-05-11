@@ -62,9 +62,9 @@
             "Qty": 100,
             "Unit": "SQM",
             "UnitPrice": 10,
-            "TotAmt": 1180,
+            "TotAmt": 1000,
             "Discount": 0,
-            "AssAmt": 1180,
+            "AssAmt": 1000,
             "GstRt": 18,
             "IgstAmt": 180,
             "TotItemVal": 1180

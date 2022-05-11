@@ -146,7 +146,7 @@ def read(conn):
 
 
 jsondata = (read(conn))
-jsondata={"Version": "1.1","UserGstin": "29ABLPK6554F000","TranDtls": { "SupTyp": "B2B", "RegRev": "N", "TaxSch": "GST","IgstOnIntra": "N" },"DocDtls": {"Typ": "INV","No": "MAR022","Dt": "06/04/2022"},"SellerDtls": {"LglNm": "Borkar Packaging Pvt. Ltd.","Gstin": "29ABLPK6554F000","Addr1": "Address1","Loc": "Hydrabad","Stcd": "29","Pin": 560001},"BuyerDtls": {"LglNm": "Shalibhadra Finance Limited","Gstin": "37ABLPK6554F002","Pos": "37","Addr1": "Address1","Loc": "Hydrabad","Stcd": "37","Pin": 518001},"ValDtls": {"AssVal": 2000,"IgstVal": 360,"CgstVal": 0,"SgstVal": 0,"CesVal": 0,"StCesVal": 0,"TotInvVal": 2360},"itemList": [{"SlNo": "1","PrdDesc": "Abc","IsServc": "N","HsnCd": "390110","Qty": 10,"Unit": "SQM","UnitPrice": 100,"TotAmt": 1000,"Discount": 0,"AssAmt": 1000,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180},{"SlNo": "2","PrdDesc": "Abc","IsServc": "N","HsnCd": "100110","Qty": 100,"Unit": "SQM","UnitPrice": 10,"TotAmt": 1180,"Discount": 0,"AssAmt": 1180,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180}]}
+jsondata={"Version": "1.1","UserGstin": "29ABLPK6554F000","TranDtls": { "SupTyp": "B2B", "RegRev": "N", "TaxSch": "GST","IgstOnIntra": "N" },"DocDtls": {"Typ": "INV","No": "MAR022","Dt": "06/04/2022"},"SellerDtls": {"LglNm": "Borkar Packaging Pvt. Ltd.","Gstin": "29ABLPK6554F000","Addr1": "Address1","Loc": "Hydrabad","Stcd": "29","Pin": 560001},"BuyerDtls": {"LglNm": "Shalibhadra Finance Limited","Gstin": "37ABLPK6554F002","Pos": "37","Addr1": "Address1","Loc": "Hydrabad","Stcd": "37","Pin": 518001},"ValDtls": {"AssVal": 2000,"IgstVal": 360,"CgstVal": 0,"SgstVal": 0,"CesVal": 0,"StCesVal": 0,"TotInvVal": 2360},"itemList": [{"SlNo": "1","PrdDesc": "Abc","IsServc": "N","HsnCd": "390110","Qty": 10,"Unit": "SQM","UnitPrice": 100,"TotAmt": 1000,"Discount": 0,"AssAmt": 1000,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180},{"SlNo": "2","PrdDesc": "Abc","IsServc": "N","HsnCd": "100110","Qty": 100,"Unit": "SQM","UnitPrice": 10,"TotAmt": 1000,"Discount": 0,"AssAmt": 1000,"GstRt": 18,"IgstAmt": 180,"TotItemVal": 1180}]}
 # ___________________________________________Dot Net Code_____________________________________________
 from Calc import Program
 
@@ -160,5 +160,5 @@ jsondata = base64.urlsafe_b64encode(json.dumps(jsondata).encode()).decode()
 # sek = base64.b64encode(sek.encode())
 # sek = base64.b64decode(sek)
 # print(jsondata)
-res=obj.EncryptBySymmetricKey(jsondata, sek, "Te1CroSf2yvOuDzoZVg9Ri7AD")
+res=obj.EncryptBySymmetricKey(jsondata, sek, "XChXKOmedvWfUaDVxE64hCc25")
 print(res)
