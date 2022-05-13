@@ -1,4 +1,3 @@
-import pyodbc
 import base64
 import json
 import clr
