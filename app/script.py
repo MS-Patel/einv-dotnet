@@ -221,15 +221,13 @@ jsondata = {
 
 obj = Program()
 
-sek = obj.call_server_api()
-print(sek)
+result = obj.call_server_api()
+result = result.split('~')
+sek = result[0]
+authtoken = result[1]
 jsondata = base64.urlsafe_b64encode(json.dumps(jsondata).encode()).decode()
-# jsondata = base64.b64encode(jsondata.encode())
-# jsondata = base64.b64decode(jsondata)
-# sek = base64.b64encode(sek.encode())
-# sek = base64.b64decode(sek)
 
-res = obj.EncryptBySymmetricKey(jsondata, sek, "PSyL7I1NXqaRf5bq5FU0d63e7")
+res = obj.EncryptBySymmetricKey(jsondata, sek, authtoken)
 try:
     result = json.loads(res)
     print(result)
