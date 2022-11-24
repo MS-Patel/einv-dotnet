@@ -224,11 +224,11 @@ obj = Program()
 sek = obj.call_server_api()
 
 jsondata = base64.urlsafe_b64encode(json.dumps(jsondata).encode()).decode()
-# jsondata = base64.b64encode(jsondata.encode())
-# jsondata = base64.b64decode(jsondata)
-# sek = base64.b64encode(sek.encode())
-# sek = base64.b64decode(sek)
-# print(jsondata)
+jsondata = base64.b64encode(jsondata.encode())
+jsondata = base64.b64decode(jsondata)
+sek = base64.b64encode(sek.encode())
+sek = base64.b64decode(sek)
+print(sek)
 res = obj.EncryptBySymmetricKey(jsondata, sek, "uxTLHetOCiX57CAURXd0w6G3k")
 try:
     result = json.loads(res)
@@ -236,4 +236,4 @@ try:
 except:
     result = json.loads(base64.urlsafe_b64decode(res.encode()).decode())
     print(result)
-    
+

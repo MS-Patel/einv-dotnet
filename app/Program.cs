@@ -49,17 +49,17 @@ namespace app
         {
             try
             {
-                
+
                 string public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArxd93uLDs8HTPqcSPpxZ\nrf0Dc29r3iPp0a8filjAyeX4RAH6lWm9qFt26CcE8ESYtmo1sVtswvs7VH4Bjg/F\nDlRpd+MnAlXuxChij8/vjyAwE71ucMrmZhxM8rOSfPML8fniZ8trr3I4R2o4xWh6\nno/xTUtZ02/yUEXbphw3DEuefzHEQnEF+quGji9pvGnPO6Krmnri9H4WPY0ysPQQ\nQd82bUZCk9XdhSZcW/am8wBulYokITRMVHlbRXqu1pOFmQMO5oSpyZU3pXbsx+Ox\nIOc4EDX0WMa9aH4+snt18WAXVGwF2B4fmBk7AtmkFzrTmbpmyVqA3KO2IjzMZPw0\nhQIDAQAB\n";
                 HttpClient client = new HttpClient();
                 string uri = "https://sandbox.shipandsmile.com/e_invoice_enc/eivital/v1.04/auth";
-                client.DefaultRequestHeaders.Add("client_id", "sandboxRiBnPXUvT");
-                client.DefaultRequestHeaders.Add("client_secret", "e4WbqLw1On2Dloa7");
-                client.DefaultRequestHeaders.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjM0MTdmNDE1YjViMDM5MDRhOWJiZDkiLCJpYXQiOjE2NDc2ODA1MTksImV4cCI6MjQzNjA4MDUxOX0.ehi6WFAvqZ-CaLA8itmiX_3xUWSrUKTFvFAsjJ9N6-4");
-                client.DefaultRequestHeaders.Add("gstin", "29ABLPK6554F000");
+                client.DefaultRequestHeaders.Add("client_id", "productionVAcpqC");
+                client.DefaultRequestHeaders.Add("client_secret", "0NYhmrH0if5FbkUR");
+                client.DefaultRequestHeaders.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjM0MThhNzEwYTQ2MDM5MDMzY2QzNTkiLCJpYXQiOjE2NDg4NzY1ODgsImV4cCI6MjQzNzI3NjU4OH0.VaPRh1vKBkhNOFvvud76TWNhY38z3pJYj6AcHa-tJWk");
+                client.DefaultRequestHeaders.Add("gstin", "24AZZPP4023G1Z3");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                string userName = "Shali_ei";
-                string password = "Ctpl@998";
+                string userName = "API_himak";
+                string password = "Himak@1234";
                 byte[] _aeskey = generateSecureKey();
                 string straesKey = Convert.ToBase64String(_aeskey);
                 RequestPayloadN aRequestPayload = new RequestPayloadN();
@@ -82,7 +82,7 @@ namespace app
                 {
                     Console.WriteLine("Call is success");
                     string verification = res.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine($"Response{verification}");
+                    Console.WriteLine($"Response = {verification}");
                     AuthResponse authResponse = res.Content.ReadAsAsync<AuthResponse>().Result;
                     string sek = DecryptBySymmerticKey(authResponse.Data.Sek, _aeskey);
                     Console.WriteLine($"Sek {sek}");
@@ -149,7 +149,7 @@ namespace app
             //string cipherresult = Encoding.ASCII.GetString(ciphertext);
             return cipherresult;
         }
-       
+
         public static string EncryptBySymmetricKey(string jsondata, string sek)
               {
               //Encrypting SEK
@@ -173,7 +173,7 @@ namespace app
                        {
                          throw ex;
                        }
-             }  
+             }
         public static string Decode(string token)
     {
        var parts = token.Split('.');
@@ -184,7 +184,7 @@ namespace app
        var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
        var headerData = JObject.Parse(headerJson);
        var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
-       var payloadData = JObject.Parse(payloadJson);        
+       var payloadData = JObject.Parse(payloadJson);
        return headerData.ToString() + payloadData.ToString();
      }
     }
@@ -233,6 +233,6 @@ namespace app
             }
         }
     }
-}        
+}
 
 
